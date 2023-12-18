@@ -27,7 +27,9 @@ export class UserService {
       .pipe(map((response) => Deserialize(response, Boolean)));
   }
 
-  // authenticate(user: LoginCred): Observable<boolean> {
-  //   return this,
-  // }
+  authenticate(user: User): Observable<any> {
+    return this.httpClient
+      .post(this.resourceUrl + '/authenticate', user)
+      .pipe(map((token) => Deserialize(token, String)));
+  }
 }
