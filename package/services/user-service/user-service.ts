@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { User } from '../../models/users';
 import { Observable, map } from 'rxjs';
 import { Deserialize } from 'cerialize';
-// import { LoginCred } from 'models/loginCred';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   resourceUrl = 'http://10.0.2.2:5277/api/users';
+
 
   constructor(private httpClient: HttpClient) {}
 
@@ -28,8 +29,6 @@ export class UserService {
   }
 
   authenticate(user: User): Observable<any> {
-    return this.httpClient
-      .post(this.resourceUrl + '/authenticate', user)
-      .pipe(map((token) => Deserialize(token, String)));
+    return this.httpClient.post(this.resourceUrl + '/authenticate', user);
   }
 }
