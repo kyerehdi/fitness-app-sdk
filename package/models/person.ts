@@ -30,4 +30,7 @@ export class Person {
 
   @autoserialize
   userId: number;
+
+  @autoserialize
+  profilePictureFileName: string;
 }

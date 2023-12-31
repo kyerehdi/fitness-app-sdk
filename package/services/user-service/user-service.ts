@@ -9,7 +9,10 @@ import { Deserialize } from 'cerialize';
   providedIn: 'root',
 })
 export class UserService {
-  resourceUrl = 'http://10.0.2.2:5277/api/users';
+  // resourceUrl = 'http://10.0.2.2:5277/api/users';
+
+
+  resourceUrl = 'http://localhost:5277/api/users';
 
 
   constructor(private httpClient: HttpClient) {}
