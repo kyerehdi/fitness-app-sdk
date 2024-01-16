@@ -3,7 +3,7 @@ import { Workout } from './workout';
 
 export class WorkoutFile{
     @autoserialize
-    gif: string;
+    gifUrl: string;
 
     @autoserialize
     workout: Workout

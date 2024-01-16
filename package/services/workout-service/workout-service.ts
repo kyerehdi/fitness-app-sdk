@@ -19,4 +19,10 @@ export class WorkoutService {
       })
       .pipe(map((response) => Deserialize(response, WorkoutFile)));
   }
+
+  fetchAllWorkouts(): Observable<any> {
+    return this.httpClient
+      .get(this.resourceURL);
+      // .pipe(map((response) => Deserialize(response, WorkoutFile)));
+  }
 }
