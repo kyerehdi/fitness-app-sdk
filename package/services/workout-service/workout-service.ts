@@ -20,9 +20,22 @@ export class WorkoutService {
       .pipe(map((response) => Deserialize(response, WorkoutFile)));
   }
 
-  fetchAllWorkouts(): Observable<any> {
+  // fetchAllWorkouts(): Observable<any> {
+  //   return this.httpClient.get(this.resourceURL);
+  //   // .pipe(map((response) => Deserialize(response, WorkoutFile)));
+  // }
+
+  fetchPopularWorkouts(): Observable<Array<WorkoutFile>> {
     return this.httpClient
-      .get(this.resourceURL);
-      // .pipe(map((response) => Deserialize(response, WorkoutFile)));
+      .get(this.resourceURL + '/popularWorkouts')
+      .pipe(map((response) => Deserialize(response, WorkoutFile)));
   }
+
+  fetchQuickWorkouts(): Observable<Array<WorkoutFile>> {
+    return this.httpClient
+      .get(this.resourceURL + '/quickWorkouts')
+      .pipe(map((response) => Deserialize(response, WorkoutFile)));
+  }
+
+
 }

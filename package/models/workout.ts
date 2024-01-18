@@ -9,4 +9,7 @@ export class Workout {
 
   @autoserialize
   workout_name: string;
+
+  @autoserialize
+  major_muscle_group: string;
 }
