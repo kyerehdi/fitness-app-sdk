@@ -10,6 +10,8 @@ import { WorkoutFile } from '../../models/workoutFile';
 export class WorkoutService {
   resourceURL = 'http://localhost:5277/api/workout';
 
+  // resourceURL = 'http://10.0.2.2:5277/api/workout';
+
   constructor(private httpClient: HttpClient) {}
 
   getWorkout(): Observable<WorkoutFile> {
@@ -36,6 +38,4 @@ export class WorkoutService {
       .get(this.resourceURL + '/quickWorkouts')
       .pipe(map((response) => Deserialize(response, WorkoutFile)));
   }
-
-
 }

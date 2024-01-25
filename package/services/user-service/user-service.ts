@@ -4,16 +4,13 @@ import { User } from '../../models/users';
 import { Observable, map } from 'rxjs';
 import { Deserialize } from 'cerialize';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   // resourceUrl = 'http://10.0.2.2:5277/api/users';
 
-
   resourceUrl = 'http://localhost:5277/api/users';
-
 
   constructor(private httpClient: HttpClient) {}
 
