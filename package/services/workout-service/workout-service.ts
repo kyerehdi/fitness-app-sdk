@@ -8,9 +8,11 @@ import { WorkoutFile } from '../../models/workoutFile';
   providedIn: 'root',
 })
 export class WorkoutService {
-  resourceURL = 'http://localhost:5277/api/workout';
+  // resourceURL = 'http://localhost:5277/api/workout';
 
   // resourceURL = 'http://10.0.2.2:5277/api/workout';
+
+  resourceURL ='http://192.168.1.162:5277/api/workout'
 
   constructor(private httpClient: HttpClient) {}
 

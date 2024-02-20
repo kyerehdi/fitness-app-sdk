@@ -11,7 +11,9 @@ import { FileData } from '../../models/fileData';
 export class PersonService {
   // resourceURL = 'http://10.0.2.2:5277/api/persons';
 
-  resourceURL = 'http://localhost:5277/api/persons';
+  // resourceURL = 'http://localhost:5277/api/persons';
+
+  resourceURL = 'http://192.168.1.162:5277/api/persons'
 
   constructor(private httpClient: HttpClient) {}
 
@@ -26,5 +28,15 @@ export class PersonService {
       FileData: picture,
       fileName: fileName,
     });
+  }
+
+  getPersonFromUserId(userId: number): Observable<Person> {
+    return this.httpClient
+      .get(`${this.resourceURL}/personId`, {
+        params: {
+          userId: userId,
+        },
+      })
+      .pipe(map((response) => Deserialize(response, Person)));
   }
 }

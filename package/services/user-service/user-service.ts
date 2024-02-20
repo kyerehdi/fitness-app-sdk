@@ -10,7 +10,9 @@ import { Deserialize } from 'cerialize';
 export class UserService {
   // resourceUrl = 'http://10.0.2.2:5277/api/users';
 
-  resourceUrl = 'http://localhost:5277/api/users';
+  // resourceUrl = 'http://localhost:5277/api/users';
+
+  resourceUrl = 'http://192.168.1.162:5277/api/users'
 
   constructor(private httpClient: HttpClient) {}
 
@@ -30,5 +32,19 @@ export class UserService {
 
   authenticate(user: User): Observable<any> {
     return this.httpClient.post(this.resourceUrl + '/authenticate', user);
+  }
+
+  getUserId(email: string, token: string): Observable<number> {
+    return this.httpClient
+      .get(`${this.resourceUrl}/userId`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization':'Bearer ' + token,
+        },
+        params: {
+          email: email,
+        },
+      })
+      .pipe(map((Response) => Deserialize(Response, Number)));
   }
 }

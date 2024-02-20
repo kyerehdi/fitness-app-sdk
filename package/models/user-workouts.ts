@@ -1,28 +1,30 @@
 import { autoserialize } from 'cerialize';
 
-
 export class UserWorkout {
-    @autoserialize
-    id: number;
+  @autoserialize
+  id: number;
 
-    @autoserialize
-    workout_name: string;
+  @autoserialize
+  workout_name: string;
 
-    @autoserialize
-    date: Date;
+  @autoserialize
+  date: Date;
 
-    @autoserialize
-    personid : string;
+  @autoserialize
+  personid: string;
 
-    @autoserialize
-    workoutid : number;
+  @autoserialize
+  workoutid: number;
 
-    @autoserialize
-    reps: number;
+  @autoserialize
+  sets: number;
 
-    @autoserialize
-    intensity: string;
+  @autoserialize
+  reps: number;
 
-    @autoserialize
-    weight: number;
+  @autoserialize
+  intensity: string;
+
+  @autoserialize
+  weight: number;
 }
