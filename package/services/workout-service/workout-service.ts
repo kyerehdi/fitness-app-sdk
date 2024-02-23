@@ -12,7 +12,7 @@ export class WorkoutService {
 
   // resourceURL = 'http://10.0.2.2:5277/api/workout';
 
-  resourceURL ='http://192.168.1.162:5277/api/workout'
+  resourceURL = 'http://192.168.1.162:5277/api/workout';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -38,6 +38,16 @@ export class WorkoutService {
   fetchQuickWorkouts(): Observable<Array<WorkoutFile>> {
     return this.httpClient
       .get(this.resourceURL + '/quickWorkouts')
+      .pipe(map((response) => Deserialize(response, WorkoutFile)));
+  }
+
+  searchWorkout(searchString: string): Observable<Array<WorkoutFile>> {
+    return this.httpClient
+      .get(this.resourceURL + '/search-workouts', {
+        params: {
+          workoutName: searchString,
+        },
+      })
       .pipe(map((response) => Deserialize(response, WorkoutFile)));
   }
 }
