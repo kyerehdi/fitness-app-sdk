@@ -29,7 +29,7 @@ export class Person {
   gender: string;
 
   @autoserialize
-  userId: number;
+  userid: number;
 
   @autoserialize
   profilePictureFileName: string;

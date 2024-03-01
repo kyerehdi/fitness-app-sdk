@@ -4,6 +4,7 @@ import { Person } from '../../models/person';
 import { Observable, map } from 'rxjs';
 import { Deserialize } from 'cerialize';
 import { FileData } from '../../models/fileData';
+import { ProfilePicture } from '../../models/profilePicture';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class PersonService {
 
   // resourceURL = 'http://localhost:5277/api/persons';
 
-  resourceURL = 'http://192.168.1.162:5277/api/persons'
+  resourceURL = 'http://192.168.1.162:5277/api/persons';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -38,5 +39,19 @@ export class PersonService {
         },
       })
       .pipe(map((response) => Deserialize(response, Person)));
+  }
+
+  getPersonProfilePicture(userId: number): Observable<ProfilePicture> {
+    return this.httpClient
+      .get(`${this.resourceURL}/profilePicture/personId`, {
+        params: {
+          userId,
+        },
+      })
+      .pipe(
+        map((response) => {
+          return Deserialize(response, ProfilePicture);
+        })
+      );
   }
 }
