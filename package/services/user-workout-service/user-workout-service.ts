@@ -1,8 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Deserialize } from 'cerialize';
+import { Deserialize, autoserialize } from 'cerialize';
 import { UserWorkout } from '../../models/user-workouts';
 import { Observable, map } from 'rxjs';
+
+export class WorkoutNumber {
+  @autoserialize
+  numberOfDaysWorkedOutThisWeek: number;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +17,7 @@ export class UserWorkoutService {
 
   // resourceUrl = 'http://10.0.2.2:5277/api/userWorkout';
 
-  resourceUrl ='http://192.168.1.162:5277/api/userWorkout'
+  resourceUrl = 'http://192.168.1.162:5277/api/userWorkout';
   constructor(private httpClient: HttpClient) {}
 
   getWorkoutFromDate(
@@ -29,5 +34,25 @@ export class UserWorkoutService {
         },
       })
       .pipe(map((response) => Deserialize(response, UserWorkout)));
+  }
+
+  getTotalUserWorkoutsFromDate(
+    startDate: string,
+    endDate: string,
+    personId: number
+  ): Observable<WorkoutNumber> {
+    return this.httpClient
+      .get(`${this.resourceUrl}/currentDaysWorkorkedOut`, {
+        params: {
+          startDate: startDate,
+          enddate: endDate,
+          personId: personId,
+        },
+      })
+      .pipe(
+        map((response) => {
+          return Deserialize(response, WorkoutNumber);
+        })
+      );
   }
 }

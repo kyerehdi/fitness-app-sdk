@@ -54,4 +54,12 @@ export class PersonService {
         })
       );
   }
+
+  updatePerson(person: Person): Observable<Person> {
+    return this.httpClient
+      .put(`${this.resourceURL}/updatePerson`, person)
+      .pipe(map((response) => Deserialize(response, Person)));
+  }
+
+  
 }

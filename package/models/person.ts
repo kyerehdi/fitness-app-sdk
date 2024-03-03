@@ -5,7 +5,7 @@ export class Person {
   id: number;
 
   @autoserialize
-  fullName: string;
+  fullname: string;
 
   @autoserialize
   age: number;
