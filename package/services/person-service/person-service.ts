@@ -24,11 +24,16 @@ export class PersonService {
       .pipe(map((response) => Deserialize(response, Person)));
   }
 
-  uploadProfilePicture(picture: FileData, fileName: string) {
-    return this.httpClient.post(this.resourceURL + '/profilePicture', {
-      FileData: picture,
-      fileName: fileName,
-    });
+  uploadProfilePicture(
+    picture: FileData,
+    fileName: string
+  ): Observable<FileData> {
+    return this.httpClient
+      .post(this.resourceURL + '/profilePicture', {
+        FileData: picture,
+        fileName: fileName,
+      })
+      .pipe(map((response) => Deserialize(response, FileData)));
   }
 
   getPersonFromUserId(userId: number): Observable<Person> {
@@ -41,7 +46,7 @@ export class PersonService {
       .pipe(map((response) => Deserialize(response, Person)));
   }
 
-  getPersonProfilePicture(userId: number): Observable<ProfilePicture> {
+  getPersonProfilePicture(userId: number): Observable<FileData> {
     return this.httpClient
       .get(`${this.resourceURL}/profilePicture/personId`, {
         params: {
@@ -50,7 +55,7 @@ export class PersonService {
       })
       .pipe(
         map((response) => {
-          return Deserialize(response, ProfilePicture);
+          return Deserialize(response, FileData);
         })
       );
   }
@@ -60,6 +65,4 @@ export class PersonService {
       .put(`${this.resourceURL}/updatePerson`, person)
       .pipe(map((response) => Deserialize(response, Person)));
   }
-
-  
 }
