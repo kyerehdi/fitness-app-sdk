@@ -2,7 +2,7 @@ import { autoserialize } from 'cerialize';
 
 export class UserWorkout {
   @autoserialize
-  id: number;
+  id: number | null;
 
   @autoserialize
   workout_name: string;
@@ -11,7 +11,7 @@ export class UserWorkout {
   date: Date;
 
   @autoserialize
-  personid: string;
+  personid: number;
 
   @autoserialize
   workoutid: number;

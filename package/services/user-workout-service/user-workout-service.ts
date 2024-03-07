@@ -55,4 +55,10 @@ export class UserWorkoutService {
         })
       );
   }
+
+  addWorkout(userWorkout: any): Observable<UserWorkout> {
+    return this.httpClient
+      .post(`${this.resourceUrl}/addWorkout`, userWorkout)
+      .pipe(map((resposne) => Deserialize(resposne, UserWorkout)));
+  }
 }
