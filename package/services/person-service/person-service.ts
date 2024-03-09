@@ -14,7 +14,7 @@ export class PersonService {
 
   // resourceURL = 'http://localhost:5277/api/persons';
 
-  resourceURL = 'http://192.168.1.162:5277/api/persons';
+  resourceURL = 'https://rest-api-latest.onrender.com/api/persons';
 
   constructor(private httpClient: HttpClient) {}
 

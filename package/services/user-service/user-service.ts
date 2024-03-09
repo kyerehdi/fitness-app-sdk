@@ -12,7 +12,7 @@ export class UserService {
 
   // resourceUrl = 'http://localhost:5277/api/users';
 
-  resourceUrl = 'http://192.168.1.162:5277/api/users'
+  resourceUrl = 'https://rest-api-latest.onrender.com/api/users'
 
   constructor(private httpClient: HttpClient) {}
 

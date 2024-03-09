@@ -17,7 +17,7 @@ export class UserWorkoutService {
 
   // resourceUrl = 'http://10.0.2.2:5277/api/userWorkout';
 
-  resourceUrl = 'http://192.168.1.162:5277/api/userWorkout';
+  resourceUrl = 'https://rest-api-latest.onrender.com/api/userWorkout';
   constructor(private httpClient: HttpClient) {}
 
   getWorkoutFromDate(
